@@ -87,55 +87,42 @@ Abstraction means removing irrelevant detail to make the problem solvable:
 
 Each double-headed arrow stands for two directed edges (one each way) with the same distance.
 
-```mermaid
-flowchart LR
-    subgraph NRB_R["Nairobi"]
-        NRB("Nairobi")
-    end
-    subgraph CH["Central Highlands"]
-        LIM("Limuru")
-        THK("Thika")
-        MUR("Muranga")
-        NYE("Nyeri")
-        NYA("Nyahururu")
-    end
-    subgraph RV["Rift Valley"]
-        NAI("Naivasha")
-        GIL("Gilgil")
-        NAK("Nakuru")
-        MAU("Mau Summit")
-        KER("Kericho")
-        ELD("Eldoret")
-        NAR("Narok")
-        BOM("Bomet")
-    end
-    subgraph LVB["Lake Victoria Basin"]
-        KIS("Kisumu")
-        KII("Kisii")
-        KAK("Kakamega")
-    end
+graph TD
+    %% Node Definitions
+    NBO[Nairobi]
+    NVS[Naivasha]
+    NKR[Nakuru]
+    THK[Thika]
+    NYR[Nyeri]
+    NYH[Nyahururu]
+    KRC[Kericho]
+    ELD[Eldoret]
+    KKM[Kakamega]
+    KSM[Kisumu]
 
-    NRB <-->|"35"| LIM
-    NRB <-->|"42"| THK
-    NRB <-->|"140"| NAR
-    LIM <-->|"57"| NAI
-    THK <-->|"40"| MUR
-    MUR <-->|"65"| NYE
-    NYE <-->|"80"| NYA
-    NAI <-->|"33"| GIL
-    GIL <-->|"30"| NAK
-    NYA <-->|"75"| NAK
-    NAK <-->|"55"| MAU
-    NAK <-->|"155"| ELD
-    MAU <-->|"60"| KER
-    KER <-->|"80"| KIS
-    KER <-->|"100"| KII
-    ELD <-->|"90"| KAK
-    KAK <-->|"53"| KIS
-    NAR <-->|"90"| BOM
-    BOM <-->|"75"| KII
-    KII <-->|"115"| KIS
-```
+    %% Main Rift Valley Route (Optimal Path - Highlighted)
+    NBO -->|A104: 90 km| NVS
+    NVS -->|A104: 68 km| NKR
+    NKR -->|B1: 105 km| KRC
+    KRC -->|B1: 83 km| KSM
+
+    %% Alternative Northern Route
+    NKR -->|A104: 156 km| ELD
+    ELD -->|C39: 60 km| KKM
+    KKM -->|A1: 52 km| KSM
+
+    %% Central Highlands Route
+    NBO -->|Thika Rd: 45 km| THK
+    THK -->|A2/B6: 105 km| NYR
+    NYR -->|B6: 55 km| NYH
+    NYH -->|B84: 68 km| NKR
+
+    %% Styling
+    style NBO fill:#2b5c8f,stroke:#1a365d,stroke-width:2px,color:#fff
+    style KSM fill:#2e7d32,stroke:#1b5e20,stroke-width:2px,color:#fff
+    style KRC fill:#0288d1,stroke:#01579b,stroke-width:2px,color:#fff
+    style NKR fill:#0288d1,stroke:#01579b,stroke-width:2px,color:#fff
+    style NVS fill:#0288d1,stroke:#01579b,stroke-width:2px,color:#fff
 
 ### Search Tree (Uniform Cost Search from Nairobi to Kisumu)
 
