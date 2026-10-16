@@ -4,6 +4,7 @@
 **Group members:**  Wario Louis Maina-190124
                     Ongoma Derrick Omondi-182842
                     Muhoro Benedict Kuria-171534
+<img width="1280" height="960" alt="Group Photo" src="https://github.com/user-attachments/assets/1a83a838-6fd8-419c-bc88-ac12db8bd5e4" />
 
 ## Question 1: Agent Design Using the PEAS Framework
 
