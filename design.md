@@ -32,8 +32,7 @@ PEAS stands for Performance measure, Environment, Actuators, Sensors.
 | **Discrete vs continuous** | Continuous (for driving) and discrete (for route planning) | Speed, position and steering angle are continuous; the road map is a discrete set of towns and roads |
 | **Number of agents** | Multi-agent (competitive and cooperative) | Other drivers, pedestrians and police share the roads and affect each other |
 
-> If your lecturer's five definitions did not include "number of agents", delete that row.
-
+> 
 ---
 
 ## Question 2: Directed Graph and Search Tree
