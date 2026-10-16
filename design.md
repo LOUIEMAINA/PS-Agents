@@ -89,54 +89,53 @@ Abstraction means removing irrelevant detail to make the problem solvable:
 Each double-headed arrow stands for two directed edges (one each way) with the same distance.
 
 ```mermaid
-graph LR
-    subgraph Nairobi_Region[Nairobi Region]
-        NRB((Nairobi))
+flowchart LR
+    subgraph NRB_R["Nairobi"]
+        NRB("Nairobi")
     end
-    subgraph Central_Highlands[Central Highlands]
-        LIM((Limuru))
-        THK((Thika))
-        MUR((Murang'a))
-        NYE((Nyeri))
-        NYA((Nyahururu))
+    subgraph CH["Central Highlands"]
+        LIM("Limuru")
+        THK("Thika")
+        MUR("Muranga")
+        NYE("Nyeri")
+        NYA("Nyahururu")
     end
-    subgraph Rift_Valley[Rift Valley]
-        NAI((Naivasha))
-        GIL((Gilgil))
-        NAK((Nakuru))
-        MAU((Mau Summit))
-        KER((Kericho))
-        ELD((Eldoret))
-        NAR((Narok))
-        BOM((Bomet))
+    subgraph RV["Rift Valley"]
+        NAI("Naivasha")
+        GIL("Gilgil")
+        NAK("Nakuru")
+        MAU("Mau Summit")
+        KER("Kericho")
+        ELD("Eldoret")
+        NAR("Narok")
+        BOM("Bomet")
     end
-    subgraph Lake_Victoria_Basin[Lake Victoria Basin]
-        KIS((Kisumu))
-        KII((Kisii))
-        KAK((Kakamega))
+    subgraph LVB["Lake Victoria Basin"]
+        KIS("Kisumu")
+        KII("Kisii")
+        KAK("Kakamega")
     end
 
-    NRB <-->|35| LIM
-    NRB <-->|42| THK
-    NRB <-->|140| NAR
-    LIM <-->|57| NAI
-    THK <-->|40| MUR
-    MUR <-->|65| NYE
-    NYE <-->|80| NYA
-    NAI <-->|33| GIL
-    GIL <-->|30| NAK
-    NYA <-->|75| NAK
-    NAK <-->|55| MAU
-    NAK <-->|155| ELD
-    MAU <-->|60| KER
-    KER <-->|80| KIS
-    KER <-->|100| KII
-    ELD <-->|90| KAK
-    KAK <-->|53| KIS
-    NAR <-->|90| BOM
-    BOM <-->|75| KII
-    BOM <-->|50| KER
-    KII <-->|115| KIS
+    NRB <-->|"35"| LIM
+    NRB <-->|"42"| THK
+    NRB <-->|"140"| NAR
+    LIM <-->|"57"| NAI
+    THK <-->|"40"| MUR
+    MUR <-->|"65"| NYE
+    NYE <-->|"80"| NYA
+    NAI <-->|"33"| GIL
+    GIL <-->|"30"| NAK
+    NYA <-->|"75"| NAK
+    NAK <-->|"55"| MAU
+    NAK <-->|"155"| ELD
+    MAU <-->|"60"| KER
+    KER <-->|"80"| KIS
+    KER <-->|"100"| KII
+    ELD <-->|"90"| KAK
+    KAK <-->|"53"| KIS
+    NAR <-->|"90"| BOM
+    BOM <-->|"75"| KII
+    KII <-->|"115"| KIS
 ```
 
 ### Search Tree (Uniform Cost Search from Nairobi to Kisumu)
@@ -144,43 +143,40 @@ graph LR
 Each node shows the town and its cumulative path cost **g(n)** in kilometres. Nodes shaded as "pruned" are discarded because a cheaper path to that town was already found, or the town was already expanded (this avoids loops and repeated states). Parent towns are never re-added as children.
 
 ```mermaid
-graph TD
-    A["Nairobi<br/>g=0"] --> B["Limuru<br/>g=35"]
-    A --> C["Thika<br/>g=42"]
-    A --> D["Narok<br/>g=140"]
+flowchart TD
+    A("Nairobi<br/>g=0") --> B("Limuru<br/>g=35")
+    A --> C("Thika<br/>g=42")
+    A --> D("Narok<br/>g=140")
 
-    B --> E["Naivasha<br/>g=92"]
-    C --> F["Murang'a<br/>g=82"]
-    D --> G["Bomet<br/>g=230"]
+    B --> E("Naivasha<br/>g=92")
+    C --> F("Muranga<br/>g=82")
+    D --> G("Bomet<br/>g=230")
 
-    E --> H["Gilgil<br/>g=125"]
-    F --> I["Nyeri<br/>g=147"]
-    G --> J["Kisii<br/>g=305"]
-    G --> K["Kericho (pruned)<br/>g=280"]
+    E --> H("Gilgil<br/>g=125")
+    F --> I("Nyeri<br/>g=147")
+    G --> J("Kisii<br/>g=305")
 
-    H --> L["Nakuru<br/>g=155"]
-    I --> M["Nyahururu<br/>g=227"]
-    J --> N["Kisumu<br/>g=420"]
+    H --> L("Nakuru<br/>g=155")
+    I --> M("Nyahururu<br/>g=227")
+    J --> N("Kisumu<br/>g=420")
 
-    L --> O["Mau Summit<br/>g=210"]
-    L --> P["Eldoret<br/>g=310"]
-    L --> Q["Nyahururu (pruned)<br/>g=230"]
-    M --> R["Nakuru (pruned)<br/>g=302"]
+    L --> O("Mau Summit<br/>g=210")
+    L --> P("Eldoret<br/>g=310")
+    L --> Q("Nyahururu<br/>g=230 pruned")
+    M --> R("Nakuru<br/>g=302 pruned")
 
-    O --> S["Kericho<br/>g=270"]
-    P --> T["Kakamega<br/>g=400"]
+    O --> S("Kericho<br/>g=270")
+    P --> T("Kakamega<br/>g=400")
 
-    S --> U["Kisumu GOAL<br/>g=350"]
-    S --> V["Kisii (pruned)<br/>g=370"]
-    T --> W["Kisumu<br/>g=453"]
+    S --> U("Kisumu GOAL<br/>g=350")
+    S --> V("Kisii<br/>g=370 pruned")
+    T --> W("Kisumu<br/>g=453")
 
-    style U fill:#2e7d32,color:#fff
-    style K fill:#bbb,color:#000
-    style Q fill:#bbb,color:#000
-    style R fill:#bbb,color:#000
-    style V fill:#bbb,color:#000
+    classDef optimal fill:#9FE1CB,stroke:#0F6E56,color:#04342C
+    classDef pruned fill:#eeeeee,stroke:#888888,color:#444444,stroke-dasharray:4 3
+    class A,B,E,H,L,O,S,U optimal
+    class Q,R,V pruned
 ```
-
 ---
 
 ## Question 3: Optimal Path from Nairobi to Kisumu
