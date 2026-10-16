@@ -24,7 +24,6 @@ PEAS stands for Performance measure, Environment, Actuators, Sensors.
 | **Determinism** | Stochastic | Other drivers, weather and road conditions are unpredictable, so the same action does not always give the same result |
 | **Episodic vs sequential** | Sequential | Each decision (route choice, turning, braking) affects all future decisions and the final outcome |
 | **Static vs dynamic** | Dynamic | The environment changes while the agent is deciding: vehicles move, traffic lights change, weather shifts |
-| **Discrete vs continuous** | Continuous (for driving) and discrete (for route planning) | Speed, position and steering angle are continuous; the road map is a discrete set of towns and roads |
 | **Number of agents** | Multi-agent (competitive and cooperative) | Other drivers, pedestrians and police share the roads and affect each other |
 
 
@@ -140,23 +139,24 @@ flowchart TD
     F --> I("Nyeri<br/>g=140")
     G --> J("Kericho<br/>g=285 pruned")
 
-    H --> K("Nakuru<br/>g=155")
-    I --> L("Nyahururu<br/>g=210")
+    H --> L("Nakuru<br/>g=155")
+    I --> M("Nyahururu<br/>g=210")
 
-    K --> M("Londiani<br/>g=230")
-    L --> N("Nakuru<br/>g=295 pruned")
+    L --> O("Londiani<br/>g=230")
+    L --> P("Nyahururu<br/>g=240 pruned")
+    M --> Q("Nakuru<br/>g=295 pruned")
 
-    M --> O("Kericho<br/>g=265")
-    M --> P("Eldoret<br/>g=315")
+    O --> R("Kericho<br/>g=265")
+    O --> S("Eldoret<br/>g=315")
 
-    O --> Q("Kisumu GOAL<br/>g=355")
+    R --> T("Kisumu GOAL<br/>g=355")
+    R --> U("Bomet<br/>g=315 pruned")
 
     classDef optimal fill:#9FE1CB,stroke:#0F6E56,color:#04342C
     classDef pruned fill:#eeeeee,stroke:#888888,color:#444444,stroke-dasharray:4 3
-    class A,B,E,H,K,M,O,Q optimal
-    class J,N pruned
+    class A,B,E,H,L,O,R,T optimal
+    class J,P,Q,U pruned
 ```
-
 ---
 
 ## Question 3: Optimal Path from Nairobi to Kisumu
